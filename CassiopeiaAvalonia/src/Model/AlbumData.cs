@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Cassiopeia.src.Classes
+namespace Cassiopeia.src.Model
 {
     public enum AlbumType
     {
@@ -19,7 +19,8 @@ namespace Cassiopeia.src.Classes
         public short Year { get; set; }
         internal Genre Genre { get; set; }
 
-        internal List<Song> Songs { get; set; }
+        internal List<Song> Songs { get;
+            private set; }
 
         internal String ID { get => Artist + " " + Title; }
         internal String IdSpotify { get; set; }
@@ -36,7 +37,15 @@ namespace Cassiopeia.src.Classes
 
         public AlbumData()
         {
-            Songs = new List<Song>();
+            //example album
+            Artist = "Nektar";
+            Title = "Remember the future";
+            Year = 1973;
+            Songs = new List<Song> { 
+                new("Part 1", 16*60*1000+40*1000, false),
+                new("Part 2", 18*60*1000+59*1000, false)
+            };
+            CoverPath = Environment.CurrentDirectory + "\\" + "Remember The Future_Nektar.jpg";
             //Genre = Kernel.Genres.Last();
         }
 

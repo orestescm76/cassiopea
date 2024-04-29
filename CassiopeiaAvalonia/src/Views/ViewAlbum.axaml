@@ -1,0 +1,38 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Cassiopeia.src.Views.ViewAlbum"
+		             xmlns:mod="clr-namespace:Cassiopeia.src.Model"
+		x:DataType="mod:AlbumData"
+        Title="ViewAlbum">
+	<Design.DataContext>
+		<mod:AlbumData/>
+	</Design.DataContext>
+	<Grid ShowGridLines="True">
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<TextBlock Text="Artista: Temples"/>
+		<DataGrid ItemsSource="{Binding Songs}"
+				  Grid.Row="1">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Title" Binding="{Binding Title}"/>
+				<DataGridTextColumn Header="Duration" Binding="{Binding LengthString}"/>
+			</DataGrid.Columns>
+		</DataGrid>
+		<Button Content="Reproducir"
+				Grid.Row="2"/>
+		<Image Grid.Column="1"
+			   Grid.Row="0"
+			   x:Name="imageCover"/>
+	</Grid>
+</Window>

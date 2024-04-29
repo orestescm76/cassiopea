@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Cassiopeia.src.VM;
 using System.Collections.ObjectModel;
 
-namespace Cassiopeia.src.Classes
+namespace Cassiopeia.src.Model
 {
     public class Collection
     {

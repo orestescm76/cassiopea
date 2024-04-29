@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Cassiopeia.src.Classes
+namespace Cassiopeia.src.Model
 {
     public class Song
     {
@@ -55,6 +55,15 @@ namespace Cassiopeia.src.Classes
                 return AlbumFrom.Artist + " - " + Title + " (" + AlbumFrom.Title + ")";
             else
                 return Title;
+        }
+        public string LengthString
+        {
+            get
+
+            {
+                string length = Length.TotalMinutes >= 60 ? @"h\:mm\:ss" : @"mm\:ss";
+                return Length.ToString(length);
+            }
         }
         /// <summary>
         /// Returns the song but in array

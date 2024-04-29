@@ -1,4 +1,4 @@
-﻿using Cassiopeia.src.Classes;
+﻿using Cassiopeia.src.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -254,41 +254,6 @@ namespace Cassiopeia.src.VM
 
 
 
-        //public static void Quit()
-        //{
-        //    if (!MetadataStream)
-        //    {
-        //        if (Edited)
-        //        {
-        //            DialogResult save = MessageBox.Show(LocalTexts.GetString("wantSave"), LocalTexts.GetString("titulo_ventana_principal"), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-        //            if (save == DialogResult.Yes)
-        //            {
-        //                SaveAlbums("discos.csv", SaveType.Digital);
-        //                SaveAlbums("cd.json", SaveType.CD);
-        //                SaveAlbums("vinyl.json", SaveType.Vinyl);
-        //                SaveAlbums("tapes.json", SaveType.Cassette_Tape);
-        //                SavePATHS();
-        //                SaveLyrics();
-        //            }
-        //        }
-
-        //        Config.MainFormSize = MainForm.Size;
-        //        Log.Instance.PrintMessage("Saving config...", MessageType.Info);
-        //        Config.GuardarConfiguracion();
-
-        //        Log.Instance.PrintMessage("Shutting down Player...", MessageType.Info);
-        //        Player.Instancia.Apagar();
-        //        Player.Instancia.Dispose();
-
-        //        if (File.Exists("./covers/np.jpg"))
-        //            File.Delete("./covers/np.jpg");
-
-        //    }
-        //    Log.Instance.CloseLog();
-
-        //    if (Console)
-        //        FreeConsole();
-        //}
 
 
 

@@ -1,6 +1,11 @@
-﻿using Cassiopeia.src.Classes;
+﻿using Avalonia;
+using Avalonia.Controls;
+using Cassiopeia.src.Model;
 using Cassiopeia.src.VM;
+using CassiopeiaAvalonia.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
+using MsBox.Avalonia;
+using MsBox.Avalonia.Enums;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -8,6 +13,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +26,15 @@ namespace Cassiopeia.VM
         private bool Edited = false;
         public static FileInfo HistorialFileInfo;
         public static FileInfo StreamFileInfo;
+        private Window Window;
         public Collection Collection { get; set; }
         public MainVM()
         {
+            InitApp();
+        }
+        public MainVM(Window window)
+        {
+            Window = window;
             InitApp();
         }
 
@@ -35,7 +47,8 @@ namespace Cassiopeia.VM
             HistorialFileInfo = new FileInfo("Musical log " + now.Day + "-" + now.Month + "-" + now.Year + ".txt");
             StreamFileInfo = new FileInfo("np.txt");
             LoadFiles();
-
+            //var box = MessageBoxManager.GetMessageBoxStandard("Test", "akfjsgdf", ButtonEnum.OkCancel, Icon.Warning, WindowStartupLocation.CenterScreen);
+            //box.ShowAsync();
         }
         public void LoadFiles()
         {
@@ -467,9 +480,38 @@ namespace Cassiopeia.VM
             //App.MainPage.DisplayAlert("error", "", "jaja");
             //MessageBox.Show(msg, LocalTexts.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        private void CloseApplication(object obj)
+        private async void Quit()
         {
-            //App.Quit();
+            if (!MetadataStream)
+            {
+                if (Edited)
+                {
+                    //DialogResult save = MessageBox.Show(LocalTexts.GetString("wantSave"), LocalTexts.GetString("titulo_ventana_principal"), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    //if (save == DialogResult.Yes)
+                    //{
+                    //    SaveAlbums("discos.csv", SaveType.Digital);
+                    //    SaveAlbums("cd.json", SaveType.CD);
+                    //    SaveAlbums("vinyl.json", SaveType.Vinyl);
+                    //    SaveAlbums("tapes.json", SaveType.Cassette_Tape);
+                    //    SavePATHS();
+                    //    SaveLyrics();
+                    //}
+                }
+
+                //Config.MainFormSize = MainForm.Size;
+                //Log.Instance.PrintMessage("Saving config...", MessageType.Info);
+                //Config.GuardarConfiguracion();
+
+                //Log.Instance.PrintMessage("Shutting down Player...", MessageType.Info);
+                //Player.Instancia.Apagar();
+                //Player.Instancia.Dispose();
+
+                if (File.Exists("./covers/np.jpg"))
+                    File.Delete("./covers/np.jpg");
+
+            }
+            Log.Instance.CloseLog();
         }
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cassiopeia.src.Classes
+namespace Cassiopeia.src.Model
 {
     public enum MediaCondition
     {

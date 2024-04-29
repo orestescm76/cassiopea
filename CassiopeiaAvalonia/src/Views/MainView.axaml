@@ -11,7 +11,8 @@
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
     <vm:MainVM />
   </Design.DataContext>
-	<DataGrid ItemsSource="{Binding Collection.Albums}"
+	<DataGrid x:Name="dataGridAlbums"
+		ItemsSource="{Binding Collection.Albums}"
 			  AutoGenerateColumns="True"
 			  GridLinesVisibility="Horizontal"
 			  IsReadOnly="True"

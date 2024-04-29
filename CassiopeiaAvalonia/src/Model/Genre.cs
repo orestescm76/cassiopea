@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Cassiopeia.src.Classes
+namespace Cassiopeia.src.Model
 {
     public class Genre
     {
