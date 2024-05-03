@@ -1,6 +1,8 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Cassiopeia.src.Base;
 using Cassiopeia.src.Model;
+using Cassiopeia.src.Views;
 using Cassiopeia.src.VM;
 using CassiopeiaAvalonia.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -23,6 +25,7 @@ namespace Cassiopeia.VM
 {
     public partial class MainVM : ObservableObject
     {
+        private WindowFactory WindowFactory;
         private bool Edited = false;
         public static FileInfo HistorialFileInfo;
         public static FileInfo StreamFileInfo;
@@ -34,8 +37,11 @@ namespace Cassiopeia.VM
         }
         public MainVM(Window window)
         {
-            Window = window;
+            //Window = window;
+            WindowFactory = new WindowFactory();
+            WindowFactory.RegisterWindow<ViewAlbum>();
             InitApp();
+            
         }
 
         private void InitApp()
@@ -512,6 +518,10 @@ namespace Cassiopeia.VM
             }
             Log.Instance.CloseLog();
         }
-
+        public void OpenViewAlbum(AlbumData album)
+        {
+            var window = WindowFactory.CreateWindow<AlbumVM>(ref album);
+            window.Show();
+        }
     }
 }

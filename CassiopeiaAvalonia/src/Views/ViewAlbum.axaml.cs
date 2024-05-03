@@ -1,7 +1,12 @@
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 using Cassiopeia.src.Model;
+using Cassiopeia.src.VM;
+using System;
 using System.IO;
+using System.Resources;
 
 namespace Cassiopeia.src.Views
 {
@@ -16,10 +21,20 @@ namespace Cassiopeia.src.Views
 
         private void ViewAlbum_Loaded(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            AlbumData album = DataContext as AlbumData;
-            var file = File.OpenRead(album.CoverPath);
-            Bitmap image = Bitmap.DecodeToWidth(file, 400);
-            imageCover.Source = image;
+            AlbumVM album = DataContext as AlbumVM;
+            album.Album.Title += " - TEST";
+            try
+            {
+                var file = File.OpenRead(album.Album.CoverPath);
+                Bitmap image = Bitmap.DecodeToWidth(file, 400);
+                imageCover.Source = image;
+
+            }
+            catch (Exception)
+            {
+                var cover = new Bitmap(AssetLoader.Open(new Uri("avares://Cassiopeia/Assets/unknown_album.png")));
+                imageCover.Source = cover;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Cassiopeia.src.Base;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -12,10 +13,12 @@ namespace Cassiopeia.src.Model
         EP,
         Single
     }
-    public class AlbumData
+    public class AlbumData : NotifyBase
     {
-        public String Artist { get; set; }
-        public String Title { get; set; }
+        private string _artist;
+        public String Artist { get { return _artist; } set { SetProperty<string>(ref _artist, value); } }
+        private string _title;
+        public String Title { get { return _title; } set { SetProperty(ref _title, value); } }
         public short Year { get; set; }
         internal Genre Genre { get; set; }
 

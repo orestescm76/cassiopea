@@ -1,5 +1,8 @@
 ﻿using Avalonia.Controls;
+using Cassiopeia.src.Model;
 using Cassiopeia.src.Views;
+using Cassiopeia.src.VM;
+using Cassiopeia.VM;
 
 namespace CassiopeiaAvalonia.Views;
 
@@ -10,12 +13,9 @@ public partial class MainView : UserControl
         InitializeComponent();
         dataGridAlbums.DoubleTapped += DataGridAlbums_DoubleTapped;
     }
-
     private void DataGridAlbums_DoubleTapped(object? sender, Avalonia.Input.TappedEventArgs e)
     {
-        var album = dataGridAlbums.SelectedItem;
-        ViewAlbum viewAlbumWindow = new ViewAlbum();
-        viewAlbumWindow.DataContext = album;
-        viewAlbumWindow.Show();
+        MainVM vm = this.DataContext as MainVM;
+        vm.OpenViewAlbum(dataGridAlbums.SelectedItem as AlbumData);
     }
 }
