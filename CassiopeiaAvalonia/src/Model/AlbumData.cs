@@ -16,7 +16,7 @@ namespace Cassiopeia.src.Model
     public class AlbumData : NotifyBase
     {
         private string _artist;
-        public String Artist { get { return _artist; } set { SetProperty<string>(ref _artist, value); } }
+        public String Artist { get { return _artist; } set { SetProperty(ref _artist, value); } }
         private string _title;
         public String Title { get { return _title; } set { SetProperty(ref _title, value); } }
         public short Year { get; set; }

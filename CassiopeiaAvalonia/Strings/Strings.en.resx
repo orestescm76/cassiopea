@@ -198,4 +198,25 @@
   <data name="genero_vaporwave" xml:space="preserve">
     <value>Stoner rock/metal</value>
   </data>
+  <data name="genero" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="dur_total" xml:space="preserve">
+    <value>Total duration</value>
+  </data>
+  <data name="artista" xml:space="preserve">
+    <value>Artist</value>
+  </data>
+  <data name="titulo" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="año" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="duracion" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="canciones" xml:space="preserve">
+    <value>songs</value>
+  </data>
 </root>

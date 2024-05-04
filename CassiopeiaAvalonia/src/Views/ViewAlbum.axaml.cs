@@ -16,17 +16,29 @@ namespace Cassiopeia.src.Views
         {
             InitializeComponent();
             Loaded += ViewAlbum_Loaded;
+            datagridSongs.SelectionChanged += DatagridSongs_SelectionChanged;
+            textDurationSelected.Text = Kernel.LocalTexts.GetString("dur_total") + ": 00:00:00";
+            
+        }
 
+        private void DatagridSongs_SelectionChanged(object? sender, SelectionChangedEventArgs e)
+        {
+            TimeSpan duration = TimeSpan.Zero;
+            foreach (var song in datagridSongs.SelectedItems)
+            {
+                Song s = song as Song;
+                duration += s.Length;
+            }
+            textDurationSelected.Text = Kernel.LocalTexts.GetString("dur_total") + ": " + duration.ToString();
         }
 
         private void ViewAlbum_Loaded(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             AlbumVM album = DataContext as AlbumVM;
-            album.Album.Title += " - TEST";
             try
             {
                 var file = File.OpenRead(album.Album.CoverPath);
-                Bitmap image = Bitmap.DecodeToWidth(file, 400);
+                Bitmap image = Bitmap.DecodeToWidth(file, 800);
                 imageCover.Source = image;
 
             }

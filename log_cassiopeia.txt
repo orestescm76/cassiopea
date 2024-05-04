@@ -1,7 +1,7 @@
-00:00:00.0013454 : Cassiopeia - Music Manager 1.0.0.0
-00:00:00.0020187 : .NET Version: 7.0.14
-00:00:00.0022292 : OS version: Microsoft Windows NT 10.0.22631.0
-00:00:00.0114883 : Log created on 18/02/2024 12:56:48
-00:00:00.0120000 : Creating genres...
-00:00:00.0138374 : In function: cargarAlbumesLegacy(string) - Loading CSV albums stored at discos.csv
-00:00:00.0240924 : <OK> Loaded 920 albums (in 9,6925ms)
+00:00:00.0010045 : Cassiopeia - Music Manager 1.0.0.0
+00:00:00.0014784 : .NET Version: 7.0.18
+00:00:00.0016136 : OS version: Microsoft Windows NT 10.0.22631.0
+00:00:00.0068146 : Log created on 03/05/2024 19:54:02
+00:00:00.0072064 : Creating genres...
+00:00:00.0087257 : In function: cargarAlbumesLegacy(string) - Loading CSV albums stored at discos.csv
+00:00:00.0276102 : <OK> Loaded 920 albums (in 18,4007ms)

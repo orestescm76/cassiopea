@@ -201,4 +201,22 @@
   <data name="genero_vaporwave" xml:space="preserve">
     <value>Stoner rock/metal</value>
   </data>
+  <data name="dur_total" xml:space="preserve">
+    <value>Duración total</value>
+  </data>
+  <data name="artista" xml:space="preserve">
+    <value>Artista</value>
+  </data>
+  <data name="titulo" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="año" xml:space="preserve">
+    <value>Año</value>
+  </data>
+  <data name="duracion" xml:space="preserve">
+    <value>Duración</value>
+  </data>
+  <data name="canciones" xml:space="preserve">
+    <value>canciones</value>
+  </data>
 </root>

@@ -48,6 +48,7 @@ namespace Cassiopeia.VM
         {
             Log.InitLog();
             InitGenres();
+            //LoadConfig();
             Collection = new Collection();
             DateTime now = DateTime.Now;
             HistorialFileInfo = new FileInfo("Musical log " + now.Day + "-" + now.Month + "-" + now.Year + ".txt");

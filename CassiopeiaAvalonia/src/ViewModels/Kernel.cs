@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Resources;
+using System.Globalization;
 
 namespace Cassiopeia.src.VM
 {
@@ -56,7 +58,7 @@ namespace Cassiopeia.src.VM
         public static Task TaskRefreshToken;
         private static CancellationTokenSource RefreshTokenCancellation = new CancellationTokenSource();
         private static CancellationTokenSource CancellationToken = new CancellationTokenSource();
-        public static Collection Collection;
+        public static Collection? Collection;
 #if DEBUG
         public static bool Console = true;
         public static bool CheckUpdates = false;
@@ -71,7 +73,7 @@ namespace Cassiopeia.src.VM
         public static bool SpotifyReady = true;
         public static bool JSON = false;
 
-        public static string[] Languages;
+        //public static string[] Languages;
         //public static Spotify Spotify;
         public static int NumLanguages;
         public static readonly string Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -79,12 +81,27 @@ namespace Cassiopeia.src.VM
 
         public static uint SongCount = 0;
         private static string SongID = "";
-        public static FileInfo HistorialFileInfo;
-        public static FileInfo StreamFileInfo;
-
+        public static FileInfo? HistorialFileInfo;
+        public static FileInfo? StreamFileInfo;
+        public static ResourceManager LocalTexts = new ResourceManager(typeof(Strings.Strings));
 
         public static string SearchSeparator = "/**/";
+        
+        public static void LoadConfig()
+        {
+            //Config.CargarConfiguracion();
+            try
+            {
+                /*Config.Language*/
+                //string lang = GetSystemLanguage();
 
+            }
+            catch (Exception)
+            {
+                Log.Instance.PrintMessage("Unable to find languages folder, quitting...", MessageType.Error);
+                Environment.Exit(-1);
+            }
+        }
         public static int FindGenre(string g)
         {
             for (int i = 0; i < IDGenres.Length; i++)
@@ -140,29 +157,29 @@ namespace Cassiopeia.src.VM
                 }
             }
         }
-        public static void LoadLanguages()
-        {
-            DirectoryInfo cod = new DirectoryInfo("./idiomas");
-            Languages = new String[cod.GetFiles().Length];
-            int j = 0;
-            try
-            {
-                foreach (var idioma in cod.GetFiles())
-                {
-                    string id = idioma.Name.Replace(".resx", "");
-                    id = id.Replace("original.", "");
-                    Languages[j] = id;
-                    j++;
-                }
-                NumLanguages = Languages.Length;
-            }
-            catch (DirectoryNotFoundException)
-            {
-                Log.Instance.PrintMessage("Couldn't find languages folder, cannot load", MessageType.Error);
-                Environment.Exit(-1);
-            }
+        //public static void LoadLanguages()
+        //{
+        //    DirectoryInfo cod = new DirectoryInfo("./idiomas");
+        //    Languages = new String[cod.GetFiles().Length];
+        //    int j = 0;
+        //    try
+        //    {
+        //        foreach (var idioma in cod.GetFiles())
+        //        {
+        //            string id = idioma.Name.Replace(".resx", "");
+        //            id = id.Replace("original.", "");
+        //            Languages[j] = id;
+        //            j++;
+        //        }
+        //        NumLanguages = Languages.Length;
+        //    }
+        //    catch (DirectoryNotFoundException)
+        //    {
+        //        Log.Instance.PrintMessage("Couldn't find languages folder, cannot load", MessageType.Error);
+        //        Environment.Exit(-1);
+        //    }
 
-        }
+        //}
         static async Task<bool> GetUpdate()
         {
             string contenido = string.Empty;

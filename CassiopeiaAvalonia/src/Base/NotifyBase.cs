@@ -19,7 +19,6 @@ namespace Cassiopeia.src.Base
         protected void SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
         {
             if (EqualityComparer<T>.Default.Equals(storage, value)) return;
-
             storage = value;
             OnPropertyChanged(propertyName);
         }
