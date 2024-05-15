@@ -1,4 +1,4 @@
-﻿using Cassiopeia.src.Base;
+﻿using Cassiopeia.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;

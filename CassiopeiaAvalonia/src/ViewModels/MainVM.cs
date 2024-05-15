@@ -1,11 +1,13 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
-using Cassiopeia.src.Base;
+using Avalonia.Controls.ApplicationLifetimes;
+using Cassiopeia.Base;
 using Cassiopeia.src.Model;
 using Cassiopeia.src.Views;
 using Cassiopeia.src.VM;
 using CassiopeiaAvalonia.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
+using DynamicData;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 using Newtonsoft.Json;
@@ -29,7 +31,8 @@ namespace Cassiopeia.VM
         private bool Edited = false;
         public static FileInfo HistorialFileInfo;
         public static FileInfo StreamFileInfo;
-        private Window Window;
+        public CommandBase QuitCommand {get;set;}
+       
         public Collection Collection { get; set; }
         public MainVM()
         {
@@ -41,7 +44,7 @@ namespace Cassiopeia.VM
             WindowFactory = new WindowFactory();
             WindowFactory.RegisterWindow<ViewAlbum>();
             InitApp();
-            
+            QuitCommand = new CommandBase(new Action(Quit));
         }
 
         private void InitApp()
@@ -75,8 +78,8 @@ namespace Cassiopeia.VM
                     Log.Instance.PrintMessage("discos.csv does not exist, a new database will be created...", MessageType.Warning);
                 }
             }
-            if (File.Exists("paths.txt"))
-                LoadPATHS();
+            //if (File.Exists("paths.txt"))
+            //    LoadPATHS();
             if (File.Exists("lyrics.txt"))
                 LoadLyrics();
         }
@@ -97,6 +100,7 @@ namespace Cassiopeia.VM
                     a.CanBeRemoved = true;
                 }
             }
+            
             crono.Stop();
             Log.Instance.PrintMessage("Loaded " + Collection.Albums.Count + " albums without problems", MessageType.Correct, crono, TimeType.Milliseconds);
         }
@@ -218,6 +222,7 @@ namespace Cassiopeia.VM
                     lineaC++;
                 }
             }
+            Collection.Filter = string.Empty; //notify that it's fully loaded
             crono.Stop();
             Log.Instance.PrintMessage("Loaded " + Collection.Albums.Count + " albums", MessageType.Correct, crono, TimeType.Milliseconds);
         }
@@ -278,76 +283,76 @@ namespace Cassiopeia.VM
                 }
             }
         }
-        public void LoadPATHS()
-        {
-            Log.Instance.PrintMessage("Loading PATHS", MessageType.Info);
-            using (StreamReader entrada = new FileInfo("paths.txt").OpenText())
-            {
-                string linea = null;
-                while (!entrada.EndOfStream)
-                {
-                    linea = entrada.ReadLine();
-                    string[] datos = linea.Split(';');
-                    List<AlbumData> listaAlbumes = Collection.SearchAlbum(datos[(int)CSV_PATHS_LYRICS.Album]);
-                    if (listaAlbumes.Count != 0)
-                    {
-                        foreach (AlbumData album in listaAlbumes)
-                        {
-                            if (album.Artist == datos[(int)CSV_PATHS_LYRICS.Artist] && album.Title == datos[(int)CSV_PATHS_LYRICS.Album])
-                            {
-                                Song c = album.GetSong(datos[(int)CSV_PATHS_LYRICS.SongTitle]);
-                                linea = entrada.ReadLine();
-                                c.Path = linea;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        linea = entrada.ReadLine();
-                        continue;
-                    }
-                }
-            }
-        }
-        public void SavePATHS()
-        {
-            Log.Instance.PrintMessage("Saving PATHS", MessageType.Info);
-            Stopwatch crono = Stopwatch.StartNew();
-            FileInfo pathsInfo = new FileInfo("paths.txt");
-            using (StreamWriter salida = pathsInfo.CreateText())
-            {
-                foreach (var pair in Collection.Albums)
-                {
-                    if (string.IsNullOrEmpty(pair.SoundFilesPath))
-                        continue;
-                    foreach (Song cancion in pair.Songs)
-                    {
-                        if (!string.IsNullOrEmpty(cancion.Path))
-                        {
-                            salida.Write(cancion.SavePath());
-                        }
-                    }
-                }
-                //foreach (AlbumData album in Collection.Albums)
-                //{
-                //    if (string.IsNullOrEmpty(album.SoundFilesPath))
-                //        continue;
-                //    foreach (Song cancion in album.Songs)
-                //    {
-                //        if (!string.IsNullOrEmpty(cancion.Path))
-                //        {
-                //            salida.Write(cancion.SavePath());
-                //        }
-                //    }
-                //}
-                salida.Flush();
-                pathsInfo.Refresh();
-                crono.Stop();
-            }
-            Edited = false;
-            Log.Instance.PrintMessage("Saved songs PATH", MessageType.Correct, crono, TimeType.Milliseconds);
-            Log.Instance.PrintMessage("Filesize: " + pathsInfo.Length / 1024.0 + " kb", MessageType.Info);
-        }
+        //public void LoadPATHS()
+        //{
+        //    Log.Instance.PrintMessage("Loading PATHS", MessageType.Info);
+        //    using (StreamReader entrada = new FileInfo("paths.txt").OpenText())
+        //    {
+        //        string linea = null;
+        //        while (!entrada.EndOfStream)
+        //        {
+        //            linea = entrada.ReadLine();
+        //            string[] datos = linea.Split(';');
+        //            List<AlbumData> listaAlbumes = Collection.SearchAlbum(datos[(int)CSV_PATHS_LYRICS.Album]);
+        //            if (listaAlbumes.Count != 0)
+        //            {
+        //                foreach (AlbumData album in listaAlbumes)
+        //                {
+        //                    if (album.Artist == datos[(int)CSV_PATHS_LYRICS.Artist] && album.Title == datos[(int)CSV_PATHS_LYRICS.Album])
+        //                    {
+        //                        Song c = album.GetSong(datos[(int)CSV_PATHS_LYRICS.SongTitle]);
+        //                        linea = entrada.ReadLine();
+        //                        c.Path = linea;
+        //                    }
+        //                }
+        //            }
+        //            else
+        //            {
+        //                linea = entrada.ReadLine();
+        //                continue;
+        //            }
+        //        }
+        //    }
+        //}
+        //public void SavePATHS()
+        //{
+        //    Log.Instance.PrintMessage("Saving PATHS", MessageType.Info);
+        //    Stopwatch crono = Stopwatch.StartNew();
+        //    FileInfo pathsInfo = new FileInfo("paths.txt");
+        //    using (StreamWriter salida = pathsInfo.CreateText())
+        //    {
+        //        foreach (var pair in Collection.Albums)
+        //        {
+        //            if (string.IsNullOrEmpty(pair.SoundFilesPath))
+        //                continue;
+        //            foreach (Song cancion in pair.Songs)
+        //            {
+        //                if (!string.IsNullOrEmpty(cancion.Path))
+        //                {
+        //                    salida.Write(cancion.SavePath());
+        //                }
+        //            }
+        //        }
+        //        //foreach (AlbumData album in Collection.Albums)
+        //        //{
+        //        //    if (string.IsNullOrEmpty(album.SoundFilesPath))
+        //        //        continue;
+        //        //    foreach (Song cancion in album.Songs)
+        //        //    {
+        //        //        if (!string.IsNullOrEmpty(cancion.Path))
+        //        //        {
+        //        //            salida.Write(cancion.SavePath());
+        //        //        }
+        //        //    }
+        //        //}
+        //        salida.Flush();
+        //        pathsInfo.Refresh();
+        //        crono.Stop();
+        //    }
+        //    Edited = false;
+        //    Log.Instance.PrintMessage("Saved songs PATH", MessageType.Correct, crono, TimeType.Milliseconds);
+        //    Log.Instance.PrintMessage("Filesize: " + pathsInfo.Length / 1024.0 + " kb", MessageType.Info);
+        //}
         private void SaveAlbums(string path, SaveType tipoGuardado)
         {
             Stopwatch crono = Stopwatch.StartNew();
@@ -518,6 +523,8 @@ namespace Cassiopeia.VM
 
             }
             Log.Instance.CloseLog();
+            IClassicDesktopStyleApplicationLifetime app = (IClassicDesktopStyleApplicationLifetime)Application.Current.ApplicationLifetime;
+            app.Shutdown();
         }
         public void OpenViewAlbum(AlbumData album)
         {

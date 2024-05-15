@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cassiopeia.src.Base
+namespace Cassiopeia.Base
 {
     public class WindowFactory : IWindowFactory
     {

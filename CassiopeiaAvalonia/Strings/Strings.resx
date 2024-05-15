@@ -246,4 +246,7 @@
   <data name="canciones" xml:space="preserve">
     <value>songs</value>
   </data>
+  <data name="salir" xml:space="preserve">
+    <value>Quit</value>
+  </data>
 </root>

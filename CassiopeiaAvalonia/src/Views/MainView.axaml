@@ -12,7 +12,7 @@
     <vm:MainVM />
   </Design.DataContext>
 	<DataGrid x:Name="dataGridAlbums"
-		ItemsSource="{Binding Collection.Albums}"
+		ItemsSource="{Binding Collection.FilteredAlbums}"
 			  AutoGenerateColumns="True"
 			  GridLinesVisibility="Horizontal"
 			  IsReadOnly="True"

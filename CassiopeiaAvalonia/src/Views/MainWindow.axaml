@@ -8,7 +8,8 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="CassiopeiaAvalonia.Views.MainWindow"
         Icon="/Assets/icono.ico"
-        Title="Cassiopeia">
+        Title="Cassiopeia"
+		x:DataType="vm:MainVM">
 	<DockPanel>
 		<Menu DockPanel.Dock="Top">
 			<MenuItem Header="{x:Static strings:Strings.menu_archivo}">
@@ -24,9 +25,12 @@
 				
 				<MenuItem Header="Guardar como"/>
 				<Separator/>
-				<MenuItem Header="Salir"/>
+				<MenuItem Header="{x:Static strings:Strings.salir}"
+						  Command="{Binding QuitCommand}"/>
 			</MenuItem>
 		</Menu>
+		<TextBox DockPanel.Dock="Top"
+				 Text="{Binding Collection.Filter, Mode=OneWayToSource}"/>
 		<views:MainView />
 	</DockPanel>
 </Window>

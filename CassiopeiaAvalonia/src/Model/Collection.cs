@@ -3,16 +3,44 @@ using System.Linq;
 using System.Collections.Generic;
 using Cassiopeia.src.VM;
 using System.Collections.ObjectModel;
+using Cassiopeia.VM;
+using Cassiopeia.Base;
+using System.Reactive.Linq;
+using DynamicData;
+using DynamicData.Binding;
+using Avalonia;
+using Avalonia.Threading;
+using ReactiveUI;
 
 namespace Cassiopeia.src.Model
 {
-    public class Collection
+    public class Collection : NotifyBase
     {
         public ObservableCollection<AlbumData> Albums { get; set; }
-        public List<AlbumData> FilteredAlbums { get; set; }
+       // public List<AlbumData> FilteredAlbums { get; set; }
         public List<CompactDisc> CDS { get; private set; }
         public List<VinylAlbum> Vinyls { get; private set; }
         public List<CassetteTape> Tapes { get; private set; }
+        public ObservableCollection<AlbumData> FilteredAlbums { get; set; } 
+        private string _filter;
+
+        public string Filter
+        {
+            get { return _filter; }
+            set { SetProperty(ref _filter, value); FilterData(); }
+        }
+
+        private void FilterData()
+        {
+            if (Filter is null)
+                return;
+            FilteredAlbums = new ObservableCollection<AlbumData>(
+                Albums.Where(item =>
+                    item.Title.Contains(Filter, StringComparison.OrdinalIgnoreCase))
+            );
+            OnPropertyChanged(nameof(FilteredAlbums)); // Notificar el cambio
+        }
+
         public Collection()
         {
             Albums = new ObservableCollection<AlbumData>();
@@ -32,7 +60,6 @@ namespace Cassiopeia.src.Model
                 Log.Instance.PrintMessage(album.Artist + " - " + album.Title, MessageType.Warning);
                 return false;
             }
-
             return true;
         }
         public void RemoveAlbum(ref AlbumData album)
@@ -67,9 +94,9 @@ namespace Cassiopeia.src.Model
         //public AlbumData GetAlbum(string s) //s is equal to Black Sabbath/**/Paranoid
         //{
         //    return Albums[s];
-            
+
         //    //String[] busqueda = s.Split(Kernel.SearchSeparator);
-            
+
         //    //foreach (AlbumData album in Albums)
         //    //{
         //    //    if (album.Artist == busqueda[0] && album.Title == busqueda[1])
