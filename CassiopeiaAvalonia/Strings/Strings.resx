@@ -249,4 +249,10 @@
   <data name="salir" xml:space="preserve">
     <value>Quit</value>
   </data>
+  <data name="noPremium" xml:space="preserve">
+    <value>This Spotify account is not Premium, you will not be able to use Spotify from Cassiopeiar.</value>
+  </data>
+  <data name="about" xml:space="preserve">
+    <value>About Cassiopeia</value>
+  </data>
 </root>

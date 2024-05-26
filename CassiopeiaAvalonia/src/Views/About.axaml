@@ -1,0 +1,23 @@
+<Window xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="547" d:DesignHeight="467"
+             x:Class="Cassiopeia.Views.About"
+			 xmlns:vm="clr-namespace:Cassiopeia.VM"
+				xmlns:strings="clr-namespace:Cassiopeia.Strings"
+			 x:DataType="vm:AboutVM"
+			 Width="547"
+			 Height="467"
+			Title="{x:Static strings:Strings.about}"
+		Icon="/Assets/icono.ico">
+	<StackPanel>
+        <Image Source="/Assets/banner2_0.png"
+	           VerticalAlignment="Top"/>
+		<TextBlock Text="{Binding Version, StringFormat=Cassiopeia {0}}"
+				   HorizontalAlignment="Center"
+				   FontSize="26"
+				   FontWeight="Medium"
+				   Margin="0 15 0 0"/>
+	</StackPanel>
+</Window>

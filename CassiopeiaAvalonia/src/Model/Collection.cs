@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using Cassiopeia.src.VM;
+using Cassiopeia.VM;
 using System.Collections.ObjectModel;
 using Cassiopeia.VM;
 using Cassiopeia.Base;
@@ -10,7 +10,6 @@ using DynamicData;
 using DynamicData.Binding;
 using Avalonia;
 using Avalonia.Threading;
-using ReactiveUI;
 
 namespace Cassiopeia.src.Model
 {

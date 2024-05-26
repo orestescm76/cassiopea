@@ -222,4 +222,10 @@
   <data name="salir" xml:space="preserve">
     <value>Salir</value>
   </data>
+  <data name="noPremium" xml:space="preserve">
+    <value>Esta cuenta no es Premium, no podrás controlar Spotify desde Cassiopeia.</value>
+  </data>
+  <data name="about" xml:space="preserve">
+    <value>Acerca de Cassiopeia</value>
+  </data>
 </root>

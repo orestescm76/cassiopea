@@ -3,7 +3,7 @@ using Cassiopeia.src.Interfaces;
 using Cassiopeia.src.Model;
 using Cassiopeia.src.ViewModels;
 using Cassiopeia.src.Views;
-using Cassiopeia.src.VM;
+using Cassiopeia.VM;
 using System;
 using System.Collections.Generic;
 using System.Linq;

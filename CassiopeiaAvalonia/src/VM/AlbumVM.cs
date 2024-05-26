@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Avalonia.Markup.Xaml;
 
-namespace Cassiopeia.src.VM
+namespace Cassiopeia.VM
 {
     //viewmodel for editing and viewing model
     public class AlbumVM : BaseVM

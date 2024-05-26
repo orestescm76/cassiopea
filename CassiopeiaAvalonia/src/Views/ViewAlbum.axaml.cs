@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using Cassiopeia.src.Model;
-using Cassiopeia.src.VM;
+using Cassiopeia.VM;
 using System;
 using System.IO;
 using System.Resources;

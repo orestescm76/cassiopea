@@ -1,7 +1,6 @@
 ﻿using Avalonia.Controls;
 using Cassiopeia.src.Model;
 using Cassiopeia.src.Views;
-using Cassiopeia.src.VM;
 using Cassiopeia.VM;
 
 namespace CassiopeiaAvalonia.Views;

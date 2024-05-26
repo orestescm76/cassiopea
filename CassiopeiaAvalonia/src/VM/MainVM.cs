@@ -4,9 +4,11 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Cassiopeia.Base;
 using Cassiopeia.src.Model;
 using Cassiopeia.src.Views;
-using Cassiopeia.src.VM;
+using Cassiopeia.Views;
+using Cassiopeia.VM;
 using CassiopeiaAvalonia.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using DynamicData;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
@@ -21,19 +23,26 @@ using System.Numerics;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
-using static Cassiopeia.src.VM.Kernel;
+using static Cassiopeia.VM.Kernel;
 
 namespace Cassiopeia.VM
 {
     public partial class MainVM : ObservableObject
     {
+        #region Properties
         private WindowFactory WindowFactory;
         private bool Edited = false;
         public static FileInfo HistorialFileInfo;
         public static FileInfo StreamFileInfo;
-        public CommandBase QuitCommand {get;set;}
+        public Spotify Spotify { get; set; }
        
         public Collection Collection { get; set; }
+        public RelayCommand QuitCommand {get;set;}
+        public RelayCommand LinkSpotifyCommand { get; set; }
+        public RelayCommand ImportSpotifyAlbums { get; set; }
+        public RelayCommand OpenAboutCommand { get; set; }
+        
+        #endregion
         public MainVM()
         {
             InitApp();
@@ -44,19 +53,32 @@ namespace Cassiopeia.VM
             WindowFactory = new WindowFactory();
             WindowFactory.RegisterWindow<ViewAlbum>();
             InitApp();
-            QuitCommand = new CommandBase(new Action(Quit));
+            QuitCommand = new RelayCommand(Quit);
+            LinkSpotifyCommand = new RelayCommand(LinkSpotify);
+            OpenAboutCommand = new RelayCommand(OpenAbout);
+        }
+        private void OpenAbout()
+        {
+            WindowFactory.RegisterWindow<About>();
+            var window = WindowFactory.CreateWindow<AboutVM>(typeof (About));
+            window.Show();
+        }
+        private async void LinkSpotify()
+        {
+            await Spotify.InitStreamMode();
         }
 
         private void InitApp()
         {
             Log.InitLog();
             InitGenres();
-            //LoadConfig();
+            LoadConfig();
             Collection = new Collection();
             DateTime now = DateTime.Now;
             HistorialFileInfo = new FileInfo("Musical log " + now.Day + "-" + now.Month + "-" + now.Year + ".txt");
             StreamFileInfo = new FileInfo("np.txt");
             LoadFiles();
+            Spotify = new Spotify();
             //var box = MessageBoxManager.GetMessageBoxStandard("Test", "akfjsgdf", ButtonEnum.OkCancel, Icon.Warning, WindowStartupLocation.CenterScreen);
             //box.ShowAsync();
         }

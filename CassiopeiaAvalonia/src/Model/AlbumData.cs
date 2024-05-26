@@ -22,8 +22,7 @@ namespace Cassiopeia.src.Model
         public short Year { get; set; }
         internal Genre Genre { get; set; }
 
-        internal List<Song> Songs { get;
-            private set; }
+        internal List<Song> Songs { get; set; }
 
         internal String ID { get => Artist + " " + Title; }
         internal String IdSpotify { get; set; }

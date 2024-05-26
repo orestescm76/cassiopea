@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Resources;
 using System.Globalization;
 
-namespace Cassiopeia.src.VM
+namespace Cassiopeia.VM
 {
     internal static class Kernel
     {

@@ -28,9 +28,18 @@
 				<MenuItem Header="{x:Static strings:Strings.salir}"
 						  Command="{Binding QuitCommand}"/>
 			</MenuItem>
+			<MenuItem Header="Spotify">
+				<MenuItem Header="link" Command="{Binding LinkSpotifyCommand}"/>
+				<MenuItem Header="import" 
+						  Command="{Binding ImportSpotifyAlbums}"
+						  IsEnabled="{Binding Spotify.SpotifyAvailable}"/>
+			</MenuItem>
+			<MenuItem Header="{x:Static strings:Strings.about}"
+					  Command="{Binding OpenAboutCommand}"/>
 		</Menu>
 		<TextBox DockPanel.Dock="Top"
-				 Text="{Binding Collection.Filter, Mode=OneWayToSource}"/>
+				 Text="{Binding Collection.Filter, Mode=OneWayToSource}"
+				 Watermark="poya"/>
 		<views:MainView />
 	</DockPanel>
 </Window>

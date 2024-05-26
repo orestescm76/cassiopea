@@ -6,6 +6,7 @@
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     <AssemblyName>Cassiopeia</AssemblyName>
     <RootNamespace>Cassiopeia</RootNamespace>
+	<Version>3.0.300.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Assets\icono.ico" />
@@ -27,7 +28,8 @@
     <PackageReference Include="DynamicData" Version="8.4.1" />
     <PackageReference Include="MessageBox.Avalonia" Version="3.1.5.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="ReactiveUI" Version="20.0.1" />
+    <PackageReference Include="SpotifyAPI.Web" Version="7.1.1" />
+    <PackageReference Include="SpotifyAPI.Web.Auth" Version="7.1.1" />
   </ItemGroup>
 
   <ItemGroup>

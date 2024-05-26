@@ -1,4 +1,4 @@
-﻿using Cassiopeia.src.VM;
+﻿using Cassiopeia.VM;
 using System;
 using System.Diagnostics;
 using System.IO;

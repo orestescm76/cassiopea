@@ -4,7 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Cassiopeia.src.Views.ViewAlbum"
-		xmlns:vm="clr-namespace:Cassiopeia.src.VM"
+		xmlns:vm="clr-namespace:Cassiopeia.VM"
 		xmlns:strings="clr-namespace:Cassiopeia.Strings"
 		x:DataType="vm:AlbumVM"
         Title="ViewAlbum"

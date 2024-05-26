@@ -61,6 +61,15 @@ namespace Cassiopeia.Strings {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a About Cassiopeia.
+        /// </summary>
+        public static string about {
+            get {
+                return ResourceManager.GetString("about", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Year.
         /// </summary>
         public static string año {
@@ -354,6 +363,15 @@ namespace Cassiopeia.Strings {
         public static string menu_archivo {
             get {
                 return ResourceManager.GetString("menu_archivo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a This Spotify account is not Premium, you will not be able to use Spotify from Cassiopeiar..
+        /// </summary>
+        public static string noPremium {
+            get {
+                return ResourceManager.GetString("noPremium", resourceCulture);
             }
         }
         
