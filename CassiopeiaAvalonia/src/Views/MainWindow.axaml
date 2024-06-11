@@ -39,7 +39,7 @@
 		</Menu>
 		<TextBox DockPanel.Dock="Top"
 				 Text="{Binding Collection.Filter, Mode=OneWayToSource}"
-				 Watermark="poya"/>
+				 Watermark="{x:Static strings:Strings.search_help}"/>
 		<views:MainView />
 	</DockPanel>
 </Window>

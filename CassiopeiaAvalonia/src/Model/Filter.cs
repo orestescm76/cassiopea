@@ -1,4 +1,4 @@
-﻿namespace Cassiopeia.src.Model
+﻿namespace Cassiopeia.Model
 {
     public struct Filter
     {

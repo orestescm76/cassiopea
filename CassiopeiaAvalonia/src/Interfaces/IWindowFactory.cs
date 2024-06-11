@@ -1,12 +1,12 @@
 ﻿using Avalonia.Controls;
-using Cassiopeia.src.ViewModels;
+using Cassiopeia.VM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cassiopeia.src.Interfaces
+namespace Cassiopeia.Interfaces
 {
     internal interface IWindowFactory
     {

@@ -6,7 +6,7 @@
 
 using Avalonia.Controls;
 using Cassiopeia.Base;
-using Cassiopeia.src.Model;
+using Cassiopeia.Model;
 using Cassiopeia.src.Utils;
 using Cassiopeia.VM;
 using MsBox.Avalonia.Enums;

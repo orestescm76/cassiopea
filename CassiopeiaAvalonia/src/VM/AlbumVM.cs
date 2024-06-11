@@ -1,5 +1,5 @@
-﻿using Cassiopeia.src.Model;
-using Cassiopeia.src.ViewModels;
+﻿using Cassiopeia.Model;
+using Cassiopeia.VM;
 using System;
 using System.Collections;
 using System.Collections.Generic;

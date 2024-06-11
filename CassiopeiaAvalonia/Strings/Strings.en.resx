@@ -228,4 +228,13 @@
   <data name="about" xml:space="preserve">
     <value>About Cassiopeia</value>
   </data>
+  <data name="about1" xml:space="preserve">
+    <value>Made with Avalonia</value>
+  </data>
+  <data name="about2" xml:space="preserve">
+    <value>Thanks to Delunado</value>
+  </data>
+  <data name="search_help" xml:space="preserve">
+    <value>Search...</value>
+  </data>
 </root>

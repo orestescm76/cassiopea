@@ -3,15 +3,15 @@ using System.Linq;
 using System.Collections.Generic;
 using Cassiopeia.VM;
 using System.Collections.ObjectModel;
-using Cassiopeia.VM;
 using Cassiopeia.Base;
+using Cassiopeia;
 using System.Reactive.Linq;
 using DynamicData;
 using DynamicData.Binding;
 using Avalonia;
 using Avalonia.Threading;
 
-namespace Cassiopeia.src.Model
+namespace Cassiopeia.Model
 {
     public class Collection : NotifyBase
     {
@@ -33,9 +33,14 @@ namespace Cassiopeia.src.Model
         {
             if (Filter is null)
                 return;
+            IEnumerable<AlbumData> query = Albums;
+            HashSet<AlbumData> albumContainsSong = new();
+            albumContainsSong = Utils.GetAlbumsWithSongTitle(query.ToList(), Filter);
+            query = from album in query where album.ID.ToLower().Contains(Filter) || album.ID.ToLower().Contains(Filter) select album;
+            List<AlbumData> list = query.ToList();
+            list.AddRange(albumContainsSong);
             FilteredAlbums = new ObservableCollection<AlbumData>(
-                Albums.Where(item =>
-                    item.Title.Contains(Filter, StringComparison.OrdinalIgnoreCase))
+                list
             );
             OnPropertyChanged(nameof(FilteredAlbums)); // Notificar el cambio
         }

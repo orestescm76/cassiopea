@@ -1,16 +1,15 @@
 ﻿using Avalonia.Controls;
-using Cassiopeia.src.Interfaces;
-using Cassiopeia.src.Model;
-using Cassiopeia.src.ViewModels;
-using Cassiopeia.src.Views;
-using Cassiopeia.VM;
+using Cassiopeia.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cassiopeia.Model;
+using Cassiopeia.Interfaces;
+using Cassiopeia.VM;
 
-namespace Cassiopeia.Base
+namespace Cassiopeia
 {
     public class WindowFactory : IWindowFactory
     {
@@ -22,7 +21,8 @@ namespace Cassiopeia.Base
         }
         public void RegisterWindow<TWindow>() where TWindow : Window, new()
         {
-            _registeredWindows.Add(typeof(TWindow), () => new TWindow());
+            if(!_registeredWindows.ContainsKey(typeof (TWindow)))
+                _registeredWindows.Add(typeof(TWindow), () => new TWindow());
         }
 
         public Window CreateWindow<TViewModel>(Type window) where TViewModel : BaseVM, new()

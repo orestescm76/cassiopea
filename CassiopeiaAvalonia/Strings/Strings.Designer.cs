@@ -70,6 +70,24 @@ namespace Cassiopeia.Strings {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Made with Avalonia.
+        /// </summary>
+        public static string about1 {
+            get {
+                return ResourceManager.GetString("about1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Thanks to Delunado.
+        /// </summary>
+        public static string about2 {
+            get {
+                return ResourceManager.GetString("about2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Year.
         /// </summary>
         public static string año {
@@ -381,6 +399,15 @@ namespace Cassiopeia.Strings {
         public static string salir {
             get {
                 return ResourceManager.GetString("salir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Search....
+        /// </summary>
+        public static string search_help {
+            get {
+                return ResourceManager.GetString("search_help", resourceCulture);
             }
         }
         

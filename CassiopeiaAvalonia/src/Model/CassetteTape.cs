@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cassiopeia.src.Model
+namespace Cassiopeia.Model
 {
     public class CassetteTape : IPhysicalAlbum
     {

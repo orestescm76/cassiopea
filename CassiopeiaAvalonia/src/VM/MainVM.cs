@@ -2,10 +2,8 @@
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Cassiopeia.Base;
-using Cassiopeia.src.Model;
-using Cassiopeia.src.Views;
+using Cassiopeia.Model;
 using Cassiopeia.Views;
-using Cassiopeia.VM;
 using CassiopeiaAvalonia.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;

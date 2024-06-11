@@ -2,13 +2,13 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
-using Cassiopeia.src.Model;
+using Cassiopeia.Model;
 using Cassiopeia.VM;
 using System;
 using System.IO;
 using System.Resources;
 
-namespace Cassiopeia.src.Views
+namespace Cassiopeia.Views
 {
     public partial class ViewAlbum : Window
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Cassiopeia.src.Model
+namespace Cassiopeia.Model
 {
     public enum SleeveType
     {

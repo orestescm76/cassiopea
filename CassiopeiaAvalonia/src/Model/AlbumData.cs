@@ -1,9 +1,10 @@
 ﻿using Cassiopeia.Base;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace Cassiopeia.src.Model
+namespace Cassiopeia.Model
 {
     public enum AlbumType
     {
@@ -13,12 +14,14 @@ namespace Cassiopeia.src.Model
         EP,
         Single
     }
-    public class AlbumData : NotifyBase
+    public partial class AlbumData : ObservableObject
     {
+        [ObservableProperty]
+        private string _name;
+        [ObservableProperty]
         private string _artist;
-        public String Artist { get { return _artist; } set { SetProperty(ref _artist, value); } }
+        [ObservableProperty]
         private string _title;
-        public String Title { get { return _title; } set { SetProperty(ref _title, value); } }
         public short Year { get; set; }
         internal Genre Genre { get; set; }
 

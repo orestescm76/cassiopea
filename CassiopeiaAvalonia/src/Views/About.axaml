@@ -5,19 +5,40 @@
              mc:Ignorable="d" d:DesignWidth="547" d:DesignHeight="467"
              x:Class="Cassiopeia.Views.About"
 			 xmlns:vm="clr-namespace:Cassiopeia.VM"
-				xmlns:strings="clr-namespace:Cassiopeia.Strings"
+			 xmlns:strings="clr-namespace:Cassiopeia.Strings"
 			 x:DataType="vm:AboutVM"
 			 Width="547"
-			 Height="467"
+			 Height="500"
 			Title="{x:Static strings:Strings.about}"
-		Icon="/Assets/icono.ico">
+		Icon="/Assets/icono.ico"
+		CanResize="False">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
 	<StackPanel>
-        <Image Source="/Assets/banner2_0.png"
+		<Image Source="/Assets/banner2_0.png"
 	           VerticalAlignment="Top"/>
-		<TextBlock Text="{Binding Version, StringFormat=Cassiopeia {0}}"
-				   HorizontalAlignment="Center"
-				   FontSize="26"
-				   FontWeight="Medium"
-				   Margin="0 15 0 0"/>
+		<TextBlock  Text="{Binding Version, StringFormat=Cassiopeia {0}}"
+		   FontSize="26"
+		   FontWeight="Medium"
+					HorizontalAlignment="Center"/>
 	</StackPanel>
+		<TextBlock PointerPressed="TextBlock_PointerPressed"
+				   HorizontalAlignment="Center"
+				   VerticalAlignment="Center"
+				   TextAlignment="Center"
+				   Grid.Row="1"
+				   FontSize="18">
+
+			<Run Text="{x:Static strings:Strings.about1}"/>
+			<LineBreak/>
+			<Run Text="{x:Static strings:Strings.about2}"/>
+			<LineBreak/>
+			<Run Text="https://github.com/orestescm76/cassiopeia"
+				   Foreground="SteelBlue"
+				   TextDecorations="Underline"/>
+		</TextBlock>
+	</Grid>
 </Window>

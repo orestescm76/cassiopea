@@ -6,7 +6,7 @@
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     <AssemblyName>Cassiopeia</AssemblyName>
     <RootNamespace>Cassiopeia</RootNamespace>
-	<Version>3.0.300.0</Version>
+	<Version>3.0.303.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Assets\icono.ico" />
@@ -26,6 +26,7 @@
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.10" />
     <PackageReference Include="DynamicData" Version="8.4.1" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.61" />
     <PackageReference Include="MessageBox.Avalonia" Version="3.1.5.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="SpotifyAPI.Web" Version="7.1.1" />

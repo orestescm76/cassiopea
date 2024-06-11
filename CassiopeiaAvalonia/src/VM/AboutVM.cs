@@ -1,4 +1,4 @@
-﻿using Cassiopeia.src.ViewModels;
+﻿using Cassiopeia.VM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
